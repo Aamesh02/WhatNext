@@ -1,0 +1,68 @@
+<html>
+	<head>
+	<title> What next by Aamesh</title>
+	<style>
+		*{ font-size:60px;}
+		body { background-color:lightpink;}
+	</style>
+	<script>
+		function find()
+		{
+			event.preventDefault();
+			let name = document.getElementById("name");
+			let job = document.getElementById("job")
+			let ms = document.getElementById("ms")
+			let mba = document.getElementById("mba")
+			let ans = document.getElementById("ans");
+
+			let choice = "";
+			if (job.checked)	choice = "Job";
+			else if(ms.checked)	choice = "MS";
+			else	choice = "MBA";
+			
+			if (name.value == "")
+			{
+				alert("name is empty");
+				name.value = "";
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			}
+			else if (name.value.trim() == "")
+			{
+				alert("name cannot conatain spaces");
+				name.value = "";
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			}
+			else if (! name.value.match(/^[A-Za-z ]+$/))
+			{
+				alert("name shoud contain only alphabets");
+				name.value = "";
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			}
+			
+			let msg = "name: "+ name.value + " choice: "+choice;
+			ans.innerHTML = msg;
+		}
+		</script>
+		
+		</head>
+		<body>
+		<center>
+		<h1> What Next?? </h1>
+		<form onsubmit="find()">
+		<input type="text" placeholder="enter your name" id="name"/>
+		<br><br>
+		<input type="radio" name="c" id="job" checked="true"/>JOB
+		<input type="radio" name="c" id="ms"/>MS
+		<input type="radio" name="c" id="MBA"/>MBA
+		<input type="submit"/>
+		</form>
+		<h2 id="ans"></h2>
+		</center>
+		</body>
+</html>
